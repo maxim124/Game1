@@ -38,6 +38,11 @@ namespace WpfApplication1.GameClasses
         /// <remarks>Источник: гугл-транслятор</remarks>
         const double MAX_RUN_SPEED = 8.333333;
 
+        /// <summary>
+        /// Минимальная скорость бега, мм/мсек
+        /// </summary>
+        const double MIN_RUN_SPEED = 2;
+
         //const double MIN_SPEED = 1;
         //double AVERAGE_SPEED = MIN_SPEED;
 
@@ -60,6 +65,16 @@ namespace WpfApplication1.GameClasses
         }
 
         /// <summary>
+        /// Реализация бега человека
+        /// </summary>
+        /// <param name="pastTime">время в мсек, которое прошло с предыдущей итерации игры</param>
+        internal void Run(long pastTime)
+        {
+            // TODO: дз 
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// Перевод человека в состояние прыжка
         /// </summary>
         public void JumpReset()
@@ -69,9 +84,9 @@ namespace WpfApplication1.GameClasses
         }
 
         /// <summary>
-        /// Конкретные действия по переводу игры в следующее состояние состояние
+        /// 
         /// </summary>
-        /// <param name="pastTime">время в мсек, которое прошло с предыдущего шага</param>
+        /// <param name="pastTime">время в мсек, которое прошло с предыдущей итерации игры</param>
         public void Jump(long pastTime)
         {
             // проверка корректности параметра pastTime
@@ -165,6 +180,8 @@ namespace WpfApplication1.GameClasses
         /// <summary>
         /// Пройденное человеком расстояние, м
         /// </summary>
-        public int Distance;
+        public int Distance { get; set; }
+
+        public bool IsRunning { get; set; }
     }
 }

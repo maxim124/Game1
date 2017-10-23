@@ -18,6 +18,7 @@ namespace WpfApplication1.GameClasses
         /// </summary>
         public void Reset()
         {
+            pwm.IsRunning = false;
             pwm.JumpReset();
             started = false;
 
@@ -51,6 +52,7 @@ namespace WpfApplication1.GameClasses
 
             // TODO: возможно лишний вызов - если пвм не в прыжке
             pwm.Jump(pastTime);
+            pwm.Run(pastTime);
         }
 
         /// <summary>
@@ -59,6 +61,7 @@ namespace WpfApplication1.GameClasses
         public void Start()
         {
             started = true;
+            pwm.IsRunning = true;
         }
 
         /// <summary>
