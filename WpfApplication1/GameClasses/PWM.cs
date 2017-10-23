@@ -36,7 +36,7 @@ namespace WpfApplication1.GameClasses
         /// Максимальная скорость бега, мм/мсек
         /// </summary>
         /// <remarks>Источник: гугл-транслятор</remarks>
-        const double MAX_RUN_SPEED = 8.33333;
+        const double MAX_RUN_SPEED = 8.333333;
 
         //const double MIN_SPEED = 1;
         //double AVERAGE_SPEED = MIN_SPEED;
