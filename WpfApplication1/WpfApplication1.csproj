@@ -71,6 +71,7 @@
     <Compile Include="GameClasses\GameScreen.cs" />
     <Compile Include="GameClasses\PWM.cs" />
     <Compile Include="GameClasses\Utils.cs" />
+    <Compile Include="GameClasses\Road.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

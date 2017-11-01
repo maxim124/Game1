@@ -52,9 +52,14 @@ namespace WpfApplication1.GameClasses
 
             // TODO: возможно лишний вызов - если пвм не в прыжке
             pwm.Jump(pastTime);
-            pwm.Run(pastTime);
-        }
+            if (pwm.IsRunning)
+                pwm.Run(pastTime);
 
+            // получить кактусы, чтобы отрисовать
+            // дорога, дать, кактусы, зависит, от, уровень, и, дистанция
+            Cactus[] cactuses = road.GetCactuses(level, pwm.Distance);
+        }
+        
         /// <summary>
         /// Начало игры
         /// </summary>
@@ -62,6 +67,7 @@ namespace WpfApplication1.GameClasses
         {
             started = true;
             pwm.IsRunning = true;
+            
         }
 
         /// <summary>
@@ -126,6 +132,10 @@ namespace WpfApplication1.GameClasses
 
         #endregion Настройки игры
 
+        /// <summary>
+        /// Дорога "Дедово Роуд"
+        /// </summary>
+        Road road = new Road();
 
     }
 }

@@ -182,13 +182,11 @@ namespace WpfApplication1
         /// </summary>
         Controller controller;
 
-
-        private Stopwatch _stopwatch = new Stopwatch();
-
         /// <summary>
         /// Индикатор запуска отрисовщика
         /// </summary>
         private bool rendering;
+        private Stopwatch _stopwatch;
 
         private void Window_Closed(object sender, EventArgs e)
         {

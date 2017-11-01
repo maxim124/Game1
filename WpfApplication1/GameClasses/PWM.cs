@@ -27,6 +27,7 @@ namespace WpfApplication1.GameClasses
         /// </summary>
         public const double MAX_JUMP = 5 * MAN_HEIGHT;
 
+
         /// <summary>
         /// Скорость прыжка, мм/мсек
         /// </summary>
@@ -68,11 +69,19 @@ namespace WpfApplication1.GameClasses
         /// Реализация бега человека
         /// </summary>
         /// <param name="pastTime">время в мсек, которое прошло с предыдущей итерации игры</param>
-        internal void Run(long pastTime)
+        public void Run(long pastTime)
         {
-            // TODO: дз 
-            throw new NotImplementedException();
+            if (pastTime < 0)
+                throw new ArgumentException();
+
+            if (IsRunning && pastTime > 0)
+            {
+                // изменение дистанции бега = на сколько изменится расстояние от начальной точки пвм
+                double deltax = MIN_RUN_SPEED * pastTime;
+                distanceMM += (long)deltax;
+            }
         }
+         
 
         /// <summary>
         /// Перевод человека в состояние прыжка
@@ -84,7 +93,7 @@ namespace WpfApplication1.GameClasses
         }
 
         /// <summary>
-        /// 
+        /// Реализация прыжка
         /// </summary>
         /// <param name="pastTime">время в мсек, которое прошло с предыдущей итерации игры</param>
         public void Jump(long pastTime)
@@ -105,13 +114,13 @@ namespace WpfApplication1.GameClasses
                     if (jumpHeight + delta < MAX_JUMP)
                     {
                         // недолет
-                        jumpHeight += delta;
+                        jumpHeight += (long)delta;
                     }
                     else
                     {
                         // перелет
                         delta -= MAX_JUMP - jumpHeight;
-                        jumpHeight = MAX_JUMP - delta;
+                        jumpHeight = (long)(MAX_JUMP - delta);
                         jumpUp = false;
 
                         // может быть достигнута земля
@@ -121,7 +130,8 @@ namespace WpfApplication1.GameClasses
                 else
                 {
                     // если падение вниз
-                    jumpHeight -= delta;
+                    jumpHeight -= (long)delta;
+                   
 
                     // может быть достигнута земля
                     checkGround = true;
@@ -139,6 +149,7 @@ namespace WpfApplication1.GameClasses
                 }
             }
         }
+
 
         /// <summary>
         /// Текущая высота прыжка, мм
@@ -168,7 +179,13 @@ namespace WpfApplication1.GameClasses
         /// <summary>
         /// Текущее положение человека относительно земли = высота прыжка, мм
         /// </summary>
-        double jumpHeight = 0;
+        long jumpHeight = 0;
+
+        // изначально человек на старте - начальная точка = 0
+        /// <summary>
+        /// Текущее положение человека относительно начальной точки = текущая дистанция, мм
+        /// </summary>
+        long distanceMM = 0;
 
         /// <summary>
         /// Индикатор направления прыжка:
@@ -180,8 +197,14 @@ namespace WpfApplication1.GameClasses
         /// <summary>
         /// Пройденное человеком расстояние, м
         /// </summary>
-        public int Distance { get; set; }
-
+        public double Distance
+        {
+            get { return distanceMM / 1000.0; }
+            set { distanceMM = (long)(value * 1000); }
+        }
+        /// <summary>
+        /// Индикатор бега
+        /// </summary>
         public bool IsRunning { get; set; }
     }
 }
