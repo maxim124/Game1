@@ -16,5 +16,10 @@ namespace Tests
             pwm.Run(runTime);
             Assert.AreEqual(0.2, pwm.Distance);
         }
+
+        [TestMethod]
+        public void PWM_GetRunSpeedByDistance_Test()
+        {
+        }
     }
 }

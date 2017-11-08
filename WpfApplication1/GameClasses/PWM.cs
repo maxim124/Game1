@@ -53,6 +53,16 @@ namespace WpfApplication1.GameClasses
         public const int JUMP_TIME = 1000; //500;
 
         /// <summary>
+        /// Получить скорость бега в зависимости от пройденного расстоянния (уровня игры)
+        /// </summary>
+        /// <param name="distance"></param>
+        /// <returns></returns>
+        public static double GetRunSpeedByDistance(int distance)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// Перевод человека в состояние прыжка
         /// </summary>
         public void JumpStart()

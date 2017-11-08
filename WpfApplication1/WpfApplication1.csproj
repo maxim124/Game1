@@ -70,6 +70,7 @@
     <Compile Include="GameClasses\Game.cs" />
     <Compile Include="GameClasses\GameScreen.cs" />
     <Compile Include="GameClasses\PWM.cs" />
+    <Compile Include="GameClasses\Segment.cs" />
     <Compile Include="GameClasses\Utils.cs" />
     <Compile Include="GameClasses\Road.cs" />
     <Compile Include="MainWindow.xaml.cs">

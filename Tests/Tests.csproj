@@ -58,6 +58,7 @@
     <Compile Include="DedCounting_UnitTests.cs" />
     <Compile Include="PWM_UnitTests.cs" />
     <Compile Include="Road_UnitTests.cs" />
+    <Compile Include="LevelTest.cs" />
     <Compile Include="Utils_UnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

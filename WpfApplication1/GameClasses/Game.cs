@@ -21,11 +21,40 @@ namespace WpfApplication1.GameClasses
             pwm.IsRunning = false;
             pwm.JumpReset();
             started = false;
+ 
 
             // уровень сложности игры - в минимальный
             level = 0;
             pwm.Distance = 0;
         }
+
+        public static int GetLevel(double distance)
+        {
+            if (distance < 0)
+                throw new ArgumentOutOfRangeException(nameof(distance));
+
+            // дистанция в целых метрах
+            int intDistance = (int)distance;
+            // целочисленное деление = уровень
+            int level = intDistance / 100;
+            // выбрать что меньше - рассчитанный уроаень или максимальный
+            return Math.Min(level, MAX_GAME_LEVEL);
+
+            //if (distance <= 100)
+            //    return 0;
+            //if (distance <= 200)
+            //    return 1;
+            //if (distance <= 300)
+            //    return 2;
+            //if (distance <= 400)
+            //    return 3;
+            //if (distance <= 500)
+            //    return 4;
+
+            //return MAX_GAME_LEVEL;
+        }
+       
+        public const int MAX_GAME_LEVEL = 5;
 
         /// <summary>
         /// Перевод игры в следующее состояние
@@ -57,9 +86,9 @@ namespace WpfApplication1.GameClasses
 
             // получить кактусы, чтобы отрисовать
             // дорога, дать, кактусы, зависит, от, уровень, и, дистанция
-            Cactus[] cactuses = road.GetCactuses(level, pwm.Distance);
+            Cactus[] cactuses = road.GetCactuses(pwm.Distance);
         }
-        
+       
         /// <summary>
         /// Начало игры
         /// </summary>
@@ -119,16 +148,6 @@ namespace WpfApplication1.GameClasses
         int level = 0;
 
         #region Настройки игры
-
-        /// <summary>
-        /// Количество уровней сложности игры
-        /// </summary>
-        const int LEVELS = 10;
-
-        /// <summary>
-        /// Количество метров на уровень игры
-        /// </summary>
-        const int DISTANCE_BY_LEVEL = 0;
 
         #endregion Настройки игры
 
