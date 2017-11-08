@@ -19,14 +19,24 @@ namespace WpfApplication1.GameClasses
         }
 
         /// <summary>
-        /// Вычисление участков дороги, на которые может приземлиться человек
+        /// Вычисление участков дороги, где могут размещаться кактусы
         /// </summary>
         /// <param name="width">ширина визуальной части, м</param>
         /// <param name="runspeed">скорость человека, мм/мсек</param>
+        /// <param name="jumptime">время одного прыжка человека, мсек</param>
         /// <returns></returns>
-        public static Segment[] GetCaсtusPlaces(double width, int runspeed)
+        public static Segment[] GetCaсtusPlaces(double width, int runspeed, double jumptime)
         {
+            // сколько раз можно упаковать человека в длине 
+            int PwmTimesOnWidth = (int)(width / PWM.MAN_WIDTH); // 100
 
+            // считаем время, за которое человек пробежит видимый участок дороги = секунды
+            double timeforwidth = width / runspeed;
+            // зная время прыжка, считаем сколько раз он может прыгнуть
+            int jumptimes = (int)(timeforwidth / jumptime); // ??? - секунды / мсек  // 20
+            //jumptimes++;
+
+            Segment[] pos = new Segment[PwmTimesOnWidth - jumptimes]; // 80
         }
 
         // TODO: метод для вычисления участков дороги для размещения кактусов
