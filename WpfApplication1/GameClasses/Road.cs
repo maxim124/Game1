@@ -29,7 +29,7 @@ namespace WpfApplication1.GameClasses
         public static Segment[] GetCaсtusPlaces(double width, double runspeed, double jumptime, double manWidth)
         {
             // - время одного прыжка человека, сек 
-            double jumptimeSeconds = PWM.JUMP_TIME / 1000;
+            double jumptimeSeconds = jumptime / 1000;
             // - ширина человека, м
             double manWidthMeters = manWidth / 1000;
 

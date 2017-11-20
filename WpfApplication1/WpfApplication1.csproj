@@ -64,6 +64,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GameClasses\Cactus.cs" />
+    <Compile Include="GameClasses\CactusGenerator.cs" />
     <Compile Include="GameClasses\CactusGroup.cs" />
     <Compile Include="GameClasses\Controller.cs" />
     <Compile Include="GameClasses\DedCounting.cs" />

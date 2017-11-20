@@ -39,7 +39,7 @@ namespace Tests
             // - время одного прыжка человека, мсек 
             double jumptime = PWM.JUMP_TIME;
             // - время одного прыжка человека, сек 
-            double jumptimeSeconds = PWM.JUMP_TIME / 1000;
+            double jumptimeSeconds = jumptime / 1000;
 
             // Дополнительные данные:
             // - ширина человека, мм
