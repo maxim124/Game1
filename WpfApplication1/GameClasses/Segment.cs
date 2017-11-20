@@ -5,6 +5,16 @@
     /// </summary>
     public class Segment
     {
+        public Segment()
+        {
+        }
+
+        public Segment(double offset, double length)
+        {
+            Offset = offset;
+            Length = length;
+        }
+
         /// <summary>
         /// Смещение от 0, м
         /// </summary>
