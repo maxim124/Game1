@@ -67,7 +67,7 @@ namespace Tests
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void CactusGenerator_ctor_Test8()
         {
-            CactusGenerator cactusGenerator = new CactusGenerator(101, 100, 1, 50);
+            CactusGenerator cactusGenerator = new CactusGenerator(50, 100, 1, 100);
             Assert.IsNull(cactusGenerator);
         }
 
@@ -76,6 +76,13 @@ namespace Tests
         {
             CactusGenerator cactusGenerator = CreateCactusGenerator();
             Assert.AreEqual(51, cactusGenerator.SegmentCount);
+        }
+
+        [TestMethod]
+        public void CactusGenerator_SegmentCount_Test2()
+        {
+            CactusGenerator cactusGenerator = new CactusGenerator(150, 100, 1, 10);
+            Assert.AreNotEqual(51, cactusGenerator.SegmentCount);
         }
 
         [TestMethod]
