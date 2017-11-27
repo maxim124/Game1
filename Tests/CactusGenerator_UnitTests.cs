@@ -102,7 +102,15 @@ namespace Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void CactusGenerator_GetSegment_Test3()
+        {
+            CactusGenerator cactusGenerator = CreateCactusGenerator();
+            Assert.IsNull(cactusGenerator.GetSegment(cactusGenerator.SegmentCount + 100));
+        }
+
+        [TestMethod]
+        public void CactusGenerator_GetSegment_Test4()
         {
             CactusGenerator cactusGenerator = CreateCactusGenerator();
             Segment segment;

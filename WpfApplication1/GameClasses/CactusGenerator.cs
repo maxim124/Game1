@@ -66,14 +66,24 @@ namespace WpfApplication1.GameClasses
         /// <returns></returns>
         public Segment GetSegment(int index)
         {
-            //for(int i = 0; i <= index;i++)
-            //{
+            if (!(0 <= index && index < SegmentCount))
+                throw new ArgumentOutOfRangeException("index");
 
-            ////public Cactus[] generatedCactus = new Cactus[index];
-            //}
-            //// return generatedCactus;
+            // 1. Время, за которое человек пробежит видимый участок дороги
+            double runningSeconds = width / runSpeed;
+            // 2. Cколько раз может прыгнуть
+            double jumpCount = runningSeconds / jumpTime;
+            // 4. Длина целого сегмента, м
+            double segmentLength = width / jumpCount - manWidth;
 
-            throw new NotImplementedException();
+            double offset = index * segmentLength + (index + 1) * manWidth;
+
+            //if (index < SegmentCount - 1)
+            //    return new Segment { Offset = offset, Length = segmentLength };
+            //else
+            //    return new Segment { Offset = offset, Length =  width - offset };
+
+            return new Segment { Offset = offset, Length = index < SegmentCount - 1 ? segmentLength : width - offset };
         }
 
         double width, runSpeed, jumpTime, manWidth;
