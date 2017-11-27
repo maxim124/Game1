@@ -69,17 +69,17 @@ namespace Tests
             {
                 //offset = i * (segmentLength + manWidthMeters) + manWidthMeters;
                 //offset = i * segmentLength + i * manWidthMeters + manWidthMeters;
-                offset = i * segmentLength + (i + 1) * manWidthMeters;
+                //offset = i * segmentLength + (i + 1) * manWidthMeters;
                 // создание объекта с помощью инициализатора
                 expected[i] = new Segment { Offset = offset, Length = segmentLength };
                 // создание объекта с помощью конструктора
                 //expected[i] = new Segment(offset, segmentLength);
-                //offset += segmentLength + manWidthMeters;
+                offset += segmentLength + manWidthMeters;
                 //offset = (i + 1) * (segmentLength + manWidthMeters) + manWidthMeters;
             }
             // - последний сегмент
-            int index = expected.Length - 1;
-            offset = index * segmentLength + (index + 1) * manWidthMeters;
+            //int index = expected.Length - 1;
+            //offset = index * segmentLength + (index + 1) * manWidthMeters;
             expected[expected.Length - 1] = new Segment { Offset = offset, Length = width - offset };
             // конец расчета сегментов
 
