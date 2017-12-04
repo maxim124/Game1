@@ -5,7 +5,7 @@ namespace WpfApplication1.GameClasses
     /// <summary>
     /// Генератор кактусов
     /// </summary>
-    public class CactusGenerator
+    public class b
     {
         /// <summary>
         /// Конструктор
@@ -28,9 +28,17 @@ namespace WpfApplication1.GameClasses
                 throw new ArgumentOutOfRangeException("manWidth,width");
 
             this.width = width;
+            // ???
             this.runSpeed = runSpeed;
+            // ???
             this.jumpTime = jumpTime;
             this.manWidth = manWidth;
+
+            // Расчет:
+            // 1. Время, за которое человек пробежит видимый участок дороги
+            // 2. Cколько раз может прыгнуть
+            this.jumpCount = (width / runSpeed) / jumpTime;
+            
         }
 
         /// <summary>
@@ -40,22 +48,10 @@ namespace WpfApplication1.GameClasses
         {
             get
             {
-                // - время одного прыжка человека, сек 
-                double jumptimeSeconds = jumpTime;
-                // - ширина человека, м
-                double manWidthMeters = manWidth;
-
-                // Расчет:
-                // 1. Время, за которое человек пробежит видимый участок дороги
-                double runningSeconds = width / runSpeed;
-                // 2. Cколько раз может прыгнуть
-                double jumpCount = runningSeconds / jumptimeSeconds;
                 // 3. Количество сегментов:
                 // - jumpCount - 1 - целые сегменты одинаковой длины
                 // - последний сегмент возможно неполный
-                int segmentCount = (int)Math.Ceiling(jumpCount);
-
-                return segmentCount;
+                return (int)Math.Ceiling(jumpCount);
             }
         }
 
@@ -69,13 +65,8 @@ namespace WpfApplication1.GameClasses
             if (!(0 <= index && index < SegmentCount))
                 throw new ArgumentOutOfRangeException("index");
 
-            // 1. Время, за которое человек пробежит видимый участок дороги
-            double runningSeconds = width / runSpeed;
-            // 2. Cколько раз может прыгнуть
-            double jumpCount = runningSeconds / jumpTime;
             // 4. Длина целого сегмента, м
             double segmentLength = width / jumpCount - manWidth;
-
             double offset = index * segmentLength + (index + 1) * manWidth;
 
             //if (index < SegmentCount - 1)
@@ -86,6 +77,43 @@ namespace WpfApplication1.GameClasses
             return new Segment { Offset = offset, Length = index < SegmentCount - 1 ? segmentLength : width - offset };
         }
 
+        /// <summary>
+        /// Создает кактусы
+        /// </summary>
+        /// <returns>созданные кактусы</returns>
+        /// <remarks>
+        /// Созданные кактусы распределяются по свободным сегментам случайным образом
+        /// </remarks>
+        public Cactus[] CreateCactuses()
+        {
+            // Segment segment
+            //Cactus cactus = new Cactus();
+
+            int gameLevel = 10;
+            // 1. В зависимости от уровня игры определить сколько сегментов будут заняты кактусами
+            //      Например, уровень 1 - 10 сегментов, 2 - 15 сегментов, и т.д.
+            int usedSegmentCount = GetUsedSegmentCount(gameLevel);
+            // 2. Выбрать случайным образом сегменты в соответстви с количесвом п.1
+            //      Например, сегменты 12, 17, 23
+            Segment[] usedSegments = GetUsedSegments(usedSegmentCount);
+            // 3. В зависимости от уровня игры определить сколько минимально/максимально кактусов будет размещаться в сегменте
+            //      Например, сегмент 12 - 1, 17 - 2, 23 -1
+            // 4. В зависимости от уровня игры определить какой высоты кактусы ... ????
+
+            throw new NotImplementedException();
+        }
+
+        public Segment[] GetUsedSegments(int usedSegmentCount)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetUsedSegmentCount(int gameLevel)
+        {
+            throw new NotImplementedException();
+        }
+
         double width, runSpeed, jumpTime, manWidth;
+        double jumpCount;
     }
 }
