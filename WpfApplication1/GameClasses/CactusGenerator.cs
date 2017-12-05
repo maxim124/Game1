@@ -5,7 +5,7 @@ namespace WpfApplication1.GameClasses
     /// <summary>
     /// Генератор кактусов
     /// </summary>
-    public class b
+    public class CactusGenerator
     {
         /// <summary>
         /// Конструктор
