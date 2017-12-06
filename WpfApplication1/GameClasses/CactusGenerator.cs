@@ -5,7 +5,7 @@ namespace WpfApplication1.GameClasses
     /// <summary>
     /// Генератор кактусов
     /// </summary>
-    public class b
+    public class CactusGenerator
     {
         /// <summary>
         /// Конструктор
@@ -110,10 +110,21 @@ namespace WpfApplication1.GameClasses
 
         public int GetUsedSegmentCount(int gameLevel)
         {
-            throw new NotImplementedException();
+            if (!(Game.MIN_LEVEL <= gameLevel && gameLevel <= Game.MAX_LEVEL))
+                throw new ArgumentOutOfRangeException("gameLevel");
+
+            // 1. Определить количество уровней
+            int levelCount = Game.MAX_LEVEL - Game.MIN_LEVEL + 1;
+            // 2. +1
+            levelCount++;
+            // 3. Определить кол-во сегментов на 1 уровне
+            int segmentsByLevel = SegmentCount / levelCount;
+            // 4. Умножить на уровень для получения сегментов на текущем уровне
+            return segmentsByLevel * gameLevel;
         }
 
         double width, runSpeed, jumpTime, manWidth;
         double jumpCount;
+
     }
 }

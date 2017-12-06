@@ -145,7 +145,7 @@ namespace WpfApplication1.GameClasses
         /// <summary>
         /// Текущий уровень сложности
         /// </summary>
-        int level = 0;
+        int level = 5;
 
         #region Настройки игры
 
@@ -156,5 +156,14 @@ namespace WpfApplication1.GameClasses
         /// </summary>
         Road road = new Road();
 
+        /// <summary>
+        /// Минимальный уровень игры
+        /// </summary>
+        public const int MIN_LEVEL = 1;
+
+        /// <summary>
+        /// Максимальный уровень игры
+        /// </summary>
+        public const int MAX_LEVEL = 5;
     }
 }
