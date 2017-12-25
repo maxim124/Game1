@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace WpfApplication1.GameClasses
 {
@@ -104,41 +103,9 @@ namespace WpfApplication1.GameClasses
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="usedSegmentCount"></param>
-        /// <returns>упорядоченный массив уникальных сегментов</returns>
         public Segment[] GetUsedSegments(int usedSegmentCount)
         {
-            // TODO: проверить usedSegmentCount
-
-            // создать упорядоченный список для формирования уникальных индексов сегментов
-            List<int> segmentIndecies = new List<int>();
-            // создать генератор случайных чисел
-            Random rnd = new Random();
-            // заполнить список по требуемому количеству сегментов
-            while (segmentIndecies.Count < usedSegmentCount)
-            {
-                // получить случайный индекс
-                int index = rnd.Next(0, SegmentCount);
-                // проверить наличие полученного индекса в списке
-                int insertIndex = segmentIndecies.IndexOf(index);
-                // если не нашли, добавляем
-                if (insertIndex < 0)
-                    segmentIndecies.Add(index);
-            }
-            // отсортировать список индексов
-            segmentIndecies.Sort();
-
-            // сформировать результат
-            Segment[] getusedsegments = new Segment[usedSegmentCount];
-            for (int i = 0; i < usedSegmentCount; i++)
-            {
-                getusedsegments[i] = GetSegment(segmentIndecies[i]);
-            }
-
-            return getusedsegments;
+            throw new NotImplementedException();
         }
 
         public int GetUsedSegmentCount(int gameLevel)

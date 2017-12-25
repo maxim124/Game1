@@ -136,6 +136,34 @@ namespace Tests
             Assert.AreEqual(0.7, segment.Length, 0.00000001);
         }
 
+        [TestMethod]
+        public void CactusGenerator_GetUsedSegmentCount_Test()
+        {
+            CactusGenerator cactusGenerator = CreateCactusGenerator();
+            int gameLevel, usedSegmentCount;
+
+            gameLevel = 1;
+            usedSegmentCount = cactusGenerator.GetUsedSegmentCount(gameLevel);
+            Assert.AreEqual(8, usedSegmentCount);
+
+            gameLevel = 5;
+            usedSegmentCount = cactusGenerator.GetUsedSegmentCount(gameLevel);
+            Assert.AreEqual(40, usedSegmentCount);
+        }
+
+        [TestMethod]
+        public void CactusGenerator_GetUsedSegments_Test()
+        {
+            CactusGenerator cactusGenerator = CreateCactusGenerator();
+            int gameLevel, usedSegmentCount;
+            Segment[] usedSegments;
+
+            gameLevel = 1;
+            usedSegmentCount = cactusGenerator.GetUsedSegmentCount(gameLevel);
+            usedSegments = cactusGenerator.GetUsedSegments(usedSegmentCount);
+            Assert.AreEqual(8, usedSegments.Length);
+        }
+
         static CactusGenerator CreateCactusGenerator(double width = 101, double runSpeed = PWM.MIN_RUN_SPEED, double jumpTime = PWM.JUMP_TIME / 1000, double manWidth = PWM.MAN_WIDTH / 1000)
         {
             return new CactusGenerator(width, runSpeed, jumpTime, manWidth);
