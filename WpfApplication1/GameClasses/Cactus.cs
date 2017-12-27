@@ -12,5 +12,10 @@
     public class Cactus
     {
         //кактус, инфа, для, отрисовки
+
+        /// <summary>
+        /// Ширина, м
+        /// </summary>
+        public const double WIDTH = 0.25;
     }
 }

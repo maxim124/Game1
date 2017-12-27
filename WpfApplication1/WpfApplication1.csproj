@@ -70,6 +70,7 @@
     <Compile Include="GameClasses\DedCounting.cs" />
     <Compile Include="GameClasses\Game.cs" />
     <Compile Include="GameClasses\GameScreen.cs" />
+    <Compile Include="GameClasses\MinMax.cs" />
     <Compile Include="GameClasses\PWM.cs" />
     <Compile Include="GameClasses\Segment.cs" />
     <Compile Include="GameClasses\Utils.cs" />

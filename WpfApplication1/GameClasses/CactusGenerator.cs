@@ -99,8 +99,28 @@ namespace WpfApplication1.GameClasses
             Segment[] usedSegments = GetUsedSegments(usedSegmentCount);
             // 3. В зависимости от уровня игры определить сколько минимально/максимально кактусов будет размещаться в сегменте
             //      Например, сегмент 12 - 1, 17 - 2, 23 -1
+
+            // Мышление:
+            // 1.
+            //int minCactus = Fмин(ширинаСегмента, ширинаКактуса, уровеньИгры);
+            //int maxCactus = Fмакс(ширинаСегмента, ширинаКактуса, уровеньИгры);
+            // 2.
+            // ширинаКактуса = константа
+            // 3. Эквивалент п.1 - вместо 2-х строк одна
+            // (minCactus, maxCactus) = Fмин_макс(ширинаСегмента, ширинаКактуса, уровеньИгры);
+            // 4.
+            // Ширина человека не важна, т.к. сегменты уже разделены нужными зазорами
+            // Реализация:
+            double segment_length = usedSegments[0].Length;
+            MinMax minMax = min_max(segment_length, Cactus.WIDTH, gameLevel);
+
             // 4. В зависимости от уровня игры определить какой высоты кактусы ... ????
 
+            throw new NotImplementedException();
+        }
+
+        private MinMax min_max(double segment_length, double cactus_length, int gameLevel)
+        {
             throw new NotImplementedException();
         }
 
@@ -111,7 +131,9 @@ namespace WpfApplication1.GameClasses
         /// <returns>упорядоченный массив уникальных сегментов</returns>
         public Segment[] GetUsedSegments(int usedSegmentCount)
         {
-            // TODO: проверить usedSegmentCount
+            // проверить usedSegmentCount
+            if (!(0 <= usedSegmentCount && usedSegmentCount < SegmentCount))
+                throw new ArgumentOutOfRangeException("usedSegmentCount");
 
             // создать упорядоченный список для формирования уникальных индексов сегментов
             List<int> segmentIndecies = new List<int>();

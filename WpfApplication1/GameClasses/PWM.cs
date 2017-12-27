@@ -18,7 +18,7 @@ namespace WpfApplication1.GameClasses
         public const double MAN_HEIGHT = 1.8 * 1000;
 
         /// <summary>
-        /// Жир PWM, мм
+        /// Ширина PWM, мм
         /// </summary>
         public const double MAN_WIDTH = 0.3 * 1000;
 
@@ -167,17 +167,6 @@ namespace WpfApplication1.GameClasses
         public double JumpHeight
         {
             get { return jumpHeight; }
-        }
-
-        /// <summary>
-        /// Размеры человека
-        /// </summary>
-        public Size Size
-        {
-            get
-            {
-                return new Size(0, MAN_HEIGHT);
-            }
         }
 
         /// <summary>
