@@ -112,16 +112,25 @@ namespace WpfApplication1.GameClasses
             // Ширина человека не важна, т.к. сегменты уже разделены нужными зазорами
             // Реализация:
             double segment_length = usedSegments[0].Length;
-            MinMax minMax = min_max(segment_length, Cactus.WIDTH, gameLevel);
+            MinMax minMax = GetCactusesRangeBySegment(segment_length, Cactus.WIDTH, gameLevel);
 
             // 4. В зависимости от уровня игры определить какой высоты кактусы ... ????
-
-            throw new NotImplementedException();
+            //double CactusLength = Game.GetLevel(PWM.Distance) / 100;
         }
 
-        private MinMax min_max(double segment_length, double cactus_length, int gameLevel)
+        /// <summary>
+        /// Получаем минимальное и максимальное кол-во кактусов, которое можно поместить в сегменте
+        /// </summary>
+        /// <param name="segment_length"></param>
+        /// <param name="cactus_width"></param>
+        /// <param name="gameLevel">уровень игры</param>
+        /// <returns></returns>
+        private MinMax GetCactusesRangeBySegment(double segment_length, double cactus_width, int gameLevel)
         {
-            throw new NotImplementedException();
+            int Max_Cactuses = (int)(segment_length / cactus_width);
+            int Min_Cactuses = 1;
+            //MinMax minMax = new MinMax((int)(segment_length / cactus_width), Min_Cacuses);
+            return new MinMax(Max_Cactuses, Min_Cacuses);
         }
 
         /// <summary>
